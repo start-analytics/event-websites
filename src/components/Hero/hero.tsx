@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
 		minHeight: "100vh",
 	};
 	return (
-		<section id="home" style={style} className="hero section dark-background">
+		<section id="home" style={style} className="hero section">
 			<img src="http://fakeimg.pl/1000" alt="" />
 
 			<div className="container">
