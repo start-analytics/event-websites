@@ -6,8 +6,8 @@ const Intro: React.FC = () => {
 	const t_meta = useTranslations("Metadata");
 
 	return (
-		<div>
-			<div className="d-flex mb-5 mt-3 container align-items-center justify-content-center neon-title ">{t("companyPresents")}</div>
+		<div id="about-us" className="container">
+			<div className="d-flex mb-5 mt-3 align-items-center justify-content-center neon-title ">{t("companyPresents")}</div>
 
 			<div className="d-flex align-items-center justify-content-center">
 				<div className="container">

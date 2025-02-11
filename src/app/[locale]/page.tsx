@@ -8,6 +8,7 @@ import Intro from "@/components/Intro/intro";
 const navItems = [
 	{ href: "#home", label: "home" },
 	{ href: "#about", label: "about" },
+	{ href: "#about-us", label: "aboutCompany" },
 	{ href: "#events", label: "events" },
 ];
 const data = [
