@@ -1,0 +1,277 @@
+/* Fonts */
+:root {
+	--default-font: "Poppins", sans-serif;
+	--heading-font: "Poppins", sans-serif;
+	--nav-font: "Poppins", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root {
+	--background-color: #0c0b09; /* Background color for the entire website, including individual sections */
+	--default-color: rgba(255, 255, 255, 0.7); /* Default color used for the majority of the text content across the entire website */
+	--heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
+	--accent-color: #fff; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+	--surface-color: #29261f; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+	--contrast-color: #0c0b09; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+	--nav-color: #ffffff; /* The default color of the main navmenu links */
+	--nav-hover-color: #ff5656; /* Applied to main navmenu links when they are hovered over or active */
+	--nav-mobile-background-color: #29261f; /* Used as the background color for mobile navigation menu */
+	--nav-dropdown-background-color: #29261f; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+	--nav-dropdown-color: #ffffff; /* Used for navigation links of the dropdown items in the navigation menu. */
+	--nav-dropdown-hover-color: #ff5656; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+	--background-color: #29261f;
+	--surface-color: #464135;
+}
+
+.dark-background {
+	--background-color: #000000;
+	--default-color: #ffffff;
+	--heading-color: #ffffff;
+	--surface-color: #1a1a1a;
+	--contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+	scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+	color: var(--default-color);
+	background-color: var(--background-color);
+	font-family: var(--default-font);
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+a:hover {
+	color: color-mix(in srgb, var(--accent-color), transparent 25%);
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--heading-color);
+	font-family: var(--heading-font);
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+	position: fixed;
+	inset: 0;
+	z-index: 999999;
+	overflow: hidden;
+	background: var(--background-color);
+	transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+	content: "";
+	position: fixed;
+	top: calc(50% - 30px);
+	left: calc(50% - 30px);
+	border: 6px solid #ffffff;
+	border-color: var(--accent-color) transparent var(--accent-color) transparent;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+	[data-aos-delay] {
+		transition-delay: 0 !important;
+	}
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+	color: var(--default-color);
+	background-color: var(--background-color);
+	padding: 60px 0;
+	scroll-margin-top: 77px;
+	overflow: clip;
+}
+
+@media (max-width: 1199px) {
+	section,
+	.section {
+		scroll-margin-top: 60px;
+	}
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+	padding-bottom: 60px;
+	position: relative;
+}
+
+.section-title h2 {
+	font-size: 30px;
+	font-weight: 500;
+	padding: 0;
+	line-height: 1px;
+	margin: 0;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	color: var(--accent-color);
+	position: relative;
+}
+
+.section-title h2::before {
+	content: "";
+	width: 120px;
+	height: 1px;
+	display: inline-block;
+	background: var(--accent-color);
+	margin: 4px 10px;
+}
+.section-title h2::after {
+	content: "";
+	width: 120px;
+	height: 1px;
+	display: inline-block;
+	background: var(--accent-color);
+	margin: 4px 10px;
+}
+
+.section-title p {
+	color: var(--accent-color);
+	margin: 0;
+	font-size: 36px;
+	font-weight: 600;
+	font-family: var(--heading-font);
+}
+
+.neon-title {
+	font-size: 2.5rem;
+	color: rgb(255, 255, 255); /* Set the core text color */
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	text-shadow: 0 0 2px rgb(255, 255, 255), /* Smaller inner glow */ 0 0 2px rgb(255, 255, 255); /* Outer contained glow */
+	letter-spacing: 5px;
+}
+
+@media (max-width: 768px) {
+	.neon-title {
+		font-size: 1.5rem;
+	}
+}
+
+#frame {
+	width: 300px;
+	height: 450px;
+	transition: transform 200ms;
+
+	&:hover {
+		transform: scale3d(1.05, 1.05, 1.05);
+	}
+}
+
+#card {
+	width: 100%;
+	height: 100%;
+	border-radius: 9px;
+	background-image: url("https://images.unsplash.com/photo-1461887046916-c7426e65460d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=2a03e179401fab10a3b1941193440e12");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+	position: relative;
+	transition-duration: 250ms;
+	transition-property: transform, box-shadow;
+	transition-timing-function: ease-out;
+}
+
+#light {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 9px;
+}
+
+/* css for my tutorial channel link */
+#tube {
+	position: absolute;
+	bottom: 1vw;
+	right: 1vw;
+	opacity: 0.4;
+	& > img {
+		height: 3rem;
+	}
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.heading-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px; /* Space between text and lines */
+}
+
+.heading-line {
+	width: 150px; /* Fixed width */
+	height: 2px;
+	background-color: white;
+}
+
+.heading-title {
+	white-space: nowrap; /* Prevents title from wrapping */
+}
+
+.margin-right-20 {
+	margin-right: 20px !important;
+}
+
+.opacity-60 {
+	opacity: 0.6;
+}
+
+.neon-title {
+	font-size: 2.5rem;
+	color: rgb(0, 0, 0); /* Set the core text color */
+	text-transform: uppercase;
+	letter-spacing: 5px;
+}

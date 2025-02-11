@@ -1,0 +1,14 @@
+{
+    "Metadata": {
+        "title": "Page title",
+        "description": "Page description"
+    },
+    "Homepage": {
+        "about": "About",
+        "upcomingEvents": "Upcoming Events",
+        "events": "Events",
+        "scroll": "Scroll",
+        "home": "Home",
+        "companyPresents": "Company Presents"
+    }
+}
