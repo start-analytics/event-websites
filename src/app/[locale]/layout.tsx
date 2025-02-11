@@ -1,30 +1,37 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { generateMetadata } from "@/utils/generateMetadata";
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-export { generateMetadata };
-
 type Props = {
 	children: ReactNode;
-	params: { locale: string };
+	params: Promise<{ locale: string }>; // Explicitly mark `params` as a Promise
 };
 
-export default async function RootLayout({ children, params }: Props) {
-	const { locale } = await params; // Await params before destructuring
+export async function generateMetadata({ params }: Props) {
+	const { locale } = await params;
 
-	// Ensure that the incoming `locale` is valid
-	if (!routing.locales.includes(locale as any)) {
-		console.log("cioa");
+	const t = await getTranslations({ locale: locale, namespace: "Metadata" });
+
+	return {
+		title: t("title"),
+	};
+}
+
+export default async function LocalLayout({ children, params }: Props) {
+	// Await params before accessing locale
+	const { locale } = await params;
+
+	// Validate the locale
+	if (!routing.locales.includes(locale)) {
 		notFound();
 	}
-	// Providing all messages to the client
-	// side is the easiest way to get started
-	const messages = await getMessages();
+
+	// Fetch messages for the locale
+	const messages = await getMessages({ locale });
 
 	return (
 		<html lang={locale}>

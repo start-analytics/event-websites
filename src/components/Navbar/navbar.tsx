@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { initializeMobileNavToggle, initializeMobileNavCloseOnLinkClick, initializeScrollspy } from "@utils/navbarScripts";
 import "./navbar.css";
 import useReverseTranslation from "@/hoooks/useReverseTranslation";
+import { Link } from "@/i18n/routing";
 
 // Define types for the nav items
 interface NavItem {
@@ -36,11 +37,11 @@ const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
 		<header id="header" className="header fixed-top">
 			<div className="branding d-flex align-items-center">
 				<div className="container position-relative d-flex align-items-center justify-content-between">
-					<a href="/" className="logo d-flex align-items-center me-auto me-xl-0">
+					<Link href="/" className="logo d-flex align-items-center me-auto me-xl-0">
 						<div className="d-flex">
 							<img src="http://fakeimg.pl/500" className="logo-img margin-right-13" alt="logo" />
 						</div>
-					</a>
+					</Link>
 					<nav id="navmenu" className={`navmenu ${isMobileNavActive ? "mobile-nav-active" : ""}`}>
 						<ul>
 							{navItems.map(({ href, label }, index) => (

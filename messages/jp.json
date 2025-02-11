@@ -1,0 +1,14 @@
+{
+    "Metadata": {
+        "title": "ページのタイトル",
+        "description": "ページの説明"
+    },
+    "Homepage": {
+        "about": "会社概要",
+        "upcomingEvents": "今後のイベント",
+        "events": "イベント",
+        "scroll": "スクロール",
+        "home": "ホーム",
+        "companyPresents": "会社プレゼンツ"
+    }
+}
